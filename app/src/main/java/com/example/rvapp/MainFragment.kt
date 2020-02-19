@@ -19,7 +19,7 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
 
     val users = mutableListOf<User>()
     val usersObjList = mutableListOf<User>()
-    private var adapter : UserAdapter? = null
+    private var adapter: UserAdapter? = null
     var count: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,22 +27,182 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main, container, false)
-        usersObjList.add(User("Mr1","Jhon1","Wick1","jwick1@gmail.com","66600066611"))
-        usersObjList.add(User("Mr2","Jhon2","Wick2","jwick2@gmail.com","66600066612"))
-        usersObjList.add(User("Mr3","Jhon3","Wick3","jwick3@gmail.com","66600066613"))
-        usersObjList.add(User("Mr4","Jhon4","Wick4","jwick4@gmail.com","66600066614"))
-        usersObjList.add(User("Mr5","Jhon5","Wick5","jwick5@gmail.com","66600066615"))
-        usersObjList.add(User("Mr6","Jhon6","Wick6","jwick6@gmail.com","66600066616"))
-        usersObjList.add(User("Mr7","Jhon7","Wick7","jwick7@gmail.com","66600066617"))
-        usersObjList.add(User("Mr8","Jhon8","Wick8","jwick8@gmail.com","66600066618"))
 
+        val data = arrayOf(
+            arrayOf(
+                "Mr",
+                "Kai",
+                "Nordrum",
+                "kai.nordrum@example.com",
+                "41889319",
+                "https://randomuser.me/api/portraits/men/1.jpg"
+            ),
+            arrayOf(
+                "Ms",
+                "Holly",
+                "May",
+                "holly.may@example.com",
+                "081-941-0623",
+                "https://randomuser.me/api/portraits/women/83.jpg"
+            ),
+            arrayOf(
+                "Miss",
+                "Ingebjørg",
+                "Kyvik",
+                "ingebjorg.kyvik@example.com",
+                "45939747",
+                "https://randomuser.me/api/portraits/women/24.jpg"
+            ),
+            arrayOf(
+                "Mademoiselle",
+                "Anja",
+                "Blanchard",
+                "anja.blanchard@example.com",
+                "077 485 31 66",
+                "https://randomuser.me/api/portraits/women/66.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Thomas",
+                "Harris",
+                "thomas.harris@example.com",
+                "753-780-3557",
+                "https://randomuser.me/api/portraits/men/62.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Olivier",
+                "Lévesque",
+                "olivier.levesque@example.com",
+                "543-120-3225",
+                "https://randomuser.me/api/portraits/men/83.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Guy",
+                "Campbell",
+                "guy.campbell@example.com",
+                "0786-120-185",
+                "https://randomuser.me/api/portraits/men/17.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Ali",
+                "Sandalcı",
+                "ali.sandalci@example.com",
+                "(860)-820-7397",
+                "https://randomuser.me/api/portraits/men/52.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "میلاد",
+                "نجاتی",
+                "myld.njty@example.com",
+                "0993-290-6973",
+                "https://randomuser.me/api/portraits/men/2.jpg"
+            ),
+            arrayOf(
+                "Ms",
+                "Maria",
+                "Mortensen",
+                "maria.mortensen@example.com",
+                "08424600",
+                "https://randomuser.me/api/portraits/women/96.jpg"
+            ),
+            arrayOf(
+                "Miss",
+                "Johanne",
+                "Larsen",
+                "johanne.larsen@example.com",
+                "78234964",
+                "https://randomuser.me/api/portraits/women/84.jpg"
+            ),
+            arrayOf(
+                "Miss",
+                "Laura",
+                "Perry",
+                "laura.perry@example.com",
+                "081-042-5718",
+                "https://randomuser.me/api/portraits/women/14.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Luca",
+                "Nordstrøm",
+                "luca.nordstrom@example.com",
+                "49091249",
+                "https://randomuser.me/api/portraits/men/42.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Felix",
+                "Li",
+                "felix.li@example.com",
+                "(717)-775-7178",
+                "https://randomuser.me/api/portraits/men/4.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Ross",
+                "Miller",
+                "ross.miller@example.com",
+                "(277)-361-5983",
+                "https://randomuser.me/api/portraits/men/38.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "آرتين",
+                "سالاری",
+                "artyn.slry@example.com",
+                "0984-956-4969",
+                "https://randomuser.me/api/portraits/men/78.jpg"
+            ),
+            arrayOf(
+                "Mrs",
+                "Ulla",
+                "Storm",
+                "ulla.storm@example.com",
+                "0178-4741101",
+                "https://randomuser.me/api/portraits/women/34.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Louis",
+                "Harris",
+                "louis.harris@example.com",
+                "953-636-9896",
+                "https://randomuser.me/api/portraits/men/70.jpg"
+            ),
+            arrayOf(
+                "Miss",
+                "Hélèna",
+                "Gaillard",
+                "helena.gaillard@example.com",
+                "06-70-91-26-96",
+                "https://randomuser.me/api/portraits/women/59.jpg"
+            ),
+            arrayOf(
+                "Mr",
+                "Mille",
+                "Larsen",
+                "mille.larsen@example.com",
+                "91358662",
+                "https://randomuser.me/api/portraits/men/5.jpg"
+            )
+        )
+
+        data.forEach {
+            usersObjList.add(
+                User(it[0], it[1], it[2], it[3], it[4], it[5])
+            )
+        }
 
         adapter = UserAdapter(users, this)
 
         view.list.layoutManager = LinearLayoutManager(context)
         view.list.adapter = adapter
 
-        view.floatingActionButton.setOnClickListener{
+        view.floatingActionButton.setOnClickListener {
             if (count < usersObjList.size) {
                 users.add(usersObjList[count])
                 count++
@@ -54,7 +214,7 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
     }
 
     override fun onListItemInteraction(item: User?) {
-        Log.d("KRecyclerView","OnListItemInteraction "+item!!.name)
+        Log.d("KRecyclerView", "OnListItemInteraction " + item!!.name)
     }
 
     override fun onListButtonInteraction(item: User?) {

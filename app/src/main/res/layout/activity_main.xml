@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.rvapp.MainFragment"
+        android:name="com.example.rvapp.PersonalFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
