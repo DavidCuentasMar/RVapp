@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rvapp.data.User
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -21,12 +23,12 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
     val usersObjList = mutableListOf<User>()
     private var adapter : UserAdapter? = null
     var count: Int = 0
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    lateinit var navController: NavController
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main, container, false)
+
+
         usersObjList.add(User("Mr1","Jhon1","Wick1","jwick1@gmail.com","66600066611"))
         usersObjList.add(User("Mr2","Jhon2","Wick2","jwick2@gmail.com","66600066612"))
         usersObjList.add(User("Mr3","Jhon3","Wick3","jwick3@gmail.com","66600066613"))
@@ -53,7 +55,12 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+    }
     override fun onListItemInteraction(item: User?) {
+        this.navController.navigate(R.id.action_mainFragment_to_personalFragment)
         Log.d("KRecyclerView","OnListItemInteraction "+item!!.name)
     }
 
