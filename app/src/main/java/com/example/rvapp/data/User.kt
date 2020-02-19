@@ -1,5 +1,9 @@
 package com.example.rvapp.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
     val title: String,
     val name: String,
@@ -7,5 +11,5 @@ data class User(
     val email: String,
     val phone: String,
     val photo: String
-) {
+) : Parcelable {
 }

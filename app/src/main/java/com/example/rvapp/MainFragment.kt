@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,9 +22,12 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
 
     val users = mutableListOf<User>()
     val usersObjList = mutableListOf<User>()
+
     private var adapter: UserAdapter? = null
     var count: Int = 0
     lateinit var navController: NavController
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main, container, false)
@@ -215,10 +219,15 @@ class MainFragment : Fragment(), UserAdapter.onListInteraction {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         navController = Navigation.findNavController(view)
     }
     override fun onListItemInteraction(item: User?) {
-        this.navController.navigate(R.id.action_mainFragment_to_personalFragment)
+
+        var bundle = bundleOf("data" to item)
+
+        this.navController.navigate(R.id.action_mainFragment_to_personalFragment, bundle)
         Log.d("KRecyclerView","OnListItemInteraction "+item!!.name)
     }
 
