@@ -2,15 +2,12 @@ package com.example.rvapp
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.rvapp.data.User
-import kotlinx.android.synthetic.main.fragment_personal.*
 import kotlinx.android.synthetic.main.fragment_personal.view.*
 
 /**
@@ -25,14 +22,8 @@ class PersonalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_personal, container, false)
-
-
-
-
-
         return view
     }
 
@@ -41,7 +32,7 @@ class PersonalFragment : Fragment() {
 
         user = arguments!!.getParcelable("data")!!
 
-        view.text_name.text =user.name
+        view.text_name.text = user.name
         view.text_lastname.text = user.lastname
 
         Glide.with(this).load(user.photo).into(view.imageView)
