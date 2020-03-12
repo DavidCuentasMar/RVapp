@@ -33,7 +33,9 @@ class RandomUserDao private constructor(var context: Context) {
     }
 
     fun addUsers() {
-        VolleySingleton.getInstance(context).addToRequestQueue(getJsonObject())
+        if (userList.size < 20) {
+            VolleySingleton.getInstance(context).addToRequestQueue(getJsonObject())
+        }
     }
 
     fun getUsers() = users
@@ -55,10 +57,12 @@ class RandomUserDao private constructor(var context: Context) {
     private fun parseObject(response: JSONObject) {
         var list = RandomUser.getUser(response)
         val size: Int = list.size
+
         for (i in 0 until size) {
             val user = list[i]
             userList.add(user)
         }
+
         users.value = userList
     }
 
